@@ -6,7 +6,7 @@ import HomeScreen from "./screens/HomeScreen";
 import BibleScreen from "./screens/BibleScreen";
 import BookmarkScreen from "./screens/BookmarkScreen";
 import MenuScreen from "./screens/MenuScreen";
-import { StyleSheet, View, Dimensions, Animatable } from "react-native";
+import { StyleSheet, View, Dimensions } from "react-native";
 
 const Tab = createMaterialBottomTabNavigator();
 const List = [
@@ -32,49 +32,37 @@ const List = [
   },
 ];
 export default function App() {
-  const opacity = 1;
   return (
     <NavigationContainer>
       <Tab.Navigator
         initialRouteName="Home"
         barStyle={styles.shadow}
-        labeled={false}
+        // labeled={false}
         shifting={true}
-        activeColor="#F2FEE5"
+        activeColor="#1E5A85"
       >
         {List.map((item, index) => (
           <Tab.Screen
             name={item.name}
             component={item.component}
             options={{
-              tabBarLabel: item.name,
+              // tabBarLabel: item.name,
               tabBarIcon: ({ focused }) => (
-                <Animatable.View
-                  transition={opacity}
-                  duration={500}
-                  delay={5000}
-                  style={{ opacity: opacity }}
+                <View
+                  key={index++}
+                  style={{
+                    backgroundColor: focused ? "#1E5A85" : "white",
+                    elevation: focused ? 10 : 0,
+                    top: focused ? -8 : -12,
+                    ...styles.hover,
+                  }}
                 >
-                  <Text>Hello</Text>
-                </Animatable.View>
-                // <View
-                //   style={{
-                //     backgroundColor: focused ? "#1E5A85" : "white",
-                //     elevation: focused ? 10 : 0,
-                //     ...styles.hover,
-                //   }}
-                // >
-                //   <Icon
-                //     name={item.icon}
-                //     color={focused ? "#F2F4F5" : "#1E5A85"}
-                //     size={26}
-                //     style={{
-                //       transform: focused
-                //         ? [{ rotate: "6deg" }]
-                //         : [{ rotate: "0deg" }],
-                //     }}
-                //   />
-                // </View>
+                  <Icon
+                    name={item.icon}
+                    color={focused ? "#F2F4F5" : "#1E5A85"}
+                    size={26}
+                  />
+                </View>
               ),
             }}
           />
@@ -89,9 +77,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 20,
     position: "absolute",
-    left: 20,
-    right: 20,
-    bottom: 20,
+    left: 10,
+    right: 10,
+    bottom: 10,
     padding: 10,
     shadowColor: "#1E5A85",
     shadowOffset: {
@@ -110,7 +98,6 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     alignContent: "center",
     paddingTop: 10,
-    top: -12,
     shadowColor: "#1E5A85",
   },
 });

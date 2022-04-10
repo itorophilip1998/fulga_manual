@@ -4,7 +4,6 @@
     "slug": "fulga_manual",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/logo.png",
     "splash": {
       "image": "./assets/Splash.png",
       "resizeMode": "cover",
@@ -21,9 +20,9 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/logo.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.itkeyzz.fulga_manual"
     },
     "web": {
       "favicon": "./assets/logo.png"
